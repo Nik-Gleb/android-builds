@@ -1,0 +1,9 @@
+pattern="^[0-9]\.[0-9]\.[0-9]\.([0-9]|[0-9][0-9]|[0-9][0-9][0-9]|[0-9][0-9][0-9][0-9]) "
+message=`cat $1`
+if [[ ! $message =~ $pattern ]]; then
+ preffix="[ci skip]"
+else
+ sed $'s/ \{1,\}/\\\n/' $1 > temp && mv temp $1
+ preffix="Release"
+fi
+echo -n "$preffix: " | cat - $1 > temp && mv temp $1
