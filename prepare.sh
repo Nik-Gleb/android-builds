@@ -79,13 +79,11 @@ head -n -6 build.gradle > build.temp ; mv build.temp build.gradle
 echo "task clean {delete rootProject.buildDir}" >> build.gradle
 rm -rf ./AndroidManifest.xml
 
-#cd ./build/generated
-#mv `ls | head -n 1` ../../.android.jar
-#cd ../.. && rm -rf ./build
-
 wrapProp=./gradle/wrapper/gradle-wrapper.properties
-head -n -1 $wrapProp > $wrapProp.temp ; mv $wrapProp.temp $wrapProp
+head -n -3 $wrapProp > $wrapProp.temp ; mv $wrapProp.temp $wrapProp
 echo "distributionUrl=$gradleDistrAll" >> $wrapProp
+echo "zipStoreBase=GRADLE_USER_HOME" >> $wrapProp
+echo "zipStorePath=wrapper/dists" >> $wrapProp
 
 for i in * ; do
   if [ -d "$i" ]; then
