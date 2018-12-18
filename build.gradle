@@ -32,6 +32,7 @@ buildscript {
     repositories {google(); jcenter()}
     dependencies {
         classpath 'com.android.tools.build:gradle:' + pluginGradleVer
+        classpath 'com.google.gms:google-services:4.0.1'
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:' + dexCountVersion
         classpath 'net.sf.proguard:proguard-gradle:' + proguard
         classpath files('.proguard.jar')
